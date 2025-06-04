@@ -67,6 +67,7 @@ function Importer() {
           Authorization: `Bearer ${token}`,
         },
       });
+      getFiles();
       setState((old) => ({ isLoading: false, error: null }));
     } catch (e) {
       setState((old) => ({ isLoading: false, error: e.message }));
@@ -104,7 +105,9 @@ function Importer() {
           <button disabled={state.isLoading ? true : false} type="submit">
             Enviar
           </button>
-          <button type="reset">Cancelar</button>
+          <button onClick={() => setInputs({ file: null })} type="reset">
+            Cancelar
+          </button>
         </div>
       </form>
 
